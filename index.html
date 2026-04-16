@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>sidequesting — the festival app that keeps your crew together</title>
-  <meta name="description" content="sidequesting.io — the festival app with Bluetooth mesh networking. Plan sets, find your crew on radar, stay connected when cell service dies.">
-  <meta property="og:title" content="sidequesting — the festival app that keeps your crew together">
-  <meta property="og:description" content="Bluetooth mesh networking for festivals. Find your crew when the signal drops and the crowd swallows everyone.">
+  <title>sidequesting — never lose the crew</title>
+  <meta name="description" content="The festival companion app with Bluetooth mesh networking. Find your people when cell service dies.">
+  <meta property="og:title" content="sidequesting — never lose the crew">
+  <meta property="og:description" content="The festival app that works when nothing else does. Bluetooth mesh. Live radar. Zero signal required.">
   <meta property="og:image" content="https://sidequesting.io/og-image.png">
   <meta property="og:url" content="https://sidequesting.io">
   <meta property="og:type" content="website">
@@ -14,6 +14,8 @@
   <link rel="icon" type="image/png" href="/icon-192.png">
   <link rel="apple-touch-icon" href="/icon-192.png">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap');
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
@@ -26,46 +28,52 @@
       --sky: #5DA9FF;
       --gold: #FFD480;
       --blood: #FF2A5B;
-      --text2: rgba(250,247,242,0.7);
-      --text3: rgba(250,247,242,0.5);
-      --text4: rgba(250,247,242,0.3);
-      --border: rgba(250,247,242,0.08);
+      --text1: #FAF7F2;
+      --text2: rgba(250,247,242,0.72);
+      --text3: rgba(250,247,242,0.48);
+      --text4: rgba(250,247,242,0.28);
+      --border: rgba(250,247,242,0.07);
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
       background: var(--bg);
       color: var(--bone);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
+
+    .serif { font-family: 'Playfair Display', Georgia, serif; }
 
     /* ── Nav ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 16px 32px;
       display: flex; justify-content: space-between; align-items: center;
-      background: rgba(10,8,16,0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      background: rgba(10,8,16,0.82);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
-      font-size: 18px; font-weight: 700; letter-spacing: -0.5px;
+      font-size: 17px; font-weight: 700; letter-spacing: -0.5px;
       display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--bone);
     }
-    .nav-logo img { width: 32px; height: 32px; border-radius: 8px; }
-    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-logo img { width: 28px; height: 28px; border-radius: 7px; }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
     .nav-links a {
-      color: var(--text3); text-decoration: none; font-size: 14px;
-      transition: color 0.2s;
+      color: var(--text3); text-decoration: none; font-size: 13px; font-weight: 500;
+      letter-spacing: 0.2px; transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--bone); }
     .nav-cta {
       background: var(--brand) !important; color: white !important;
-      padding: 8px 20px; border-radius: 999px; font-weight: 600; font-size: 13px;
+      padding: 8px 20px; border-radius: 999px; font-weight: 600; font-size: 12px;
+      letter-spacing: 0.3px;
     }
     .nav-cta:hover { opacity: 0.9; }
 
@@ -74,53 +82,59 @@
       min-height: 100vh;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center;
-      padding: 120px 24px 80px;
+      padding: 140px 24px 100px;
       position: relative;
       overflow: hidden;
     }
     .hero::before {
       content: '';
-      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
-      width: 800px; height: 800px;
-      background: radial-gradient(circle, rgba(176,38,255,0.15) 0%, transparent 70%);
+      position: absolute; top: -300px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(176,38,255,0.12) 0%, transparent 65%);
       pointer-events: none;
     }
     .hero::after {
       content: '';
-      position: absolute; bottom: -100px; right: -200px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(255,92,31,0.08) 0%, transparent 70%);
+      position: absolute; bottom: -200px; right: -300px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(255,92,31,0.06) 0%, transparent 65%);
       pointer-events: none;
     }
     .hero-icon {
-      width: 120px; height: 120px; border-radius: 28px;
-      box-shadow: 0 20px 80px rgba(176,38,255,0.3), 0 0 0 1px rgba(255,255,255,0.06);
-      margin-bottom: 40px;
+      width: 100px; height: 100px; border-radius: 24px;
+      box-shadow: 0 24px 80px rgba(176,38,255,0.25), 0 0 0 1px rgba(255,255,255,0.05);
+      margin-bottom: 48px;
       position: relative;
     }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--brand); margin-bottom: 20px;
+    }
     .hero h1 {
-      font-size: clamp(48px, 8vw, 80px);
-      font-weight: 800;
-      letter-spacing: -3px;
-      line-height: 1;
-      margin-bottom: 8px;
+      font-size: clamp(52px, 9vw, 88px);
+      font-weight: 900;
+      letter-spacing: -4px;
+      line-height: 0.95;
+      margin-bottom: 0;
       position: relative;
     }
     .hero h1 span {
-      background: linear-gradient(135deg, var(--brand), var(--flare));
+      background: linear-gradient(135deg, var(--bone) 20%, var(--brand) 60%, var(--flare));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
     .hero-tagline {
-      font-size: clamp(18px, 3vw, 24px);
+      font-size: clamp(17px, 2.5vw, 21px);
       color: var(--text2);
-      max-width: 500px;
-      margin: 16px auto 40px;
+      max-width: 440px;
+      margin: 28px auto 48px;
       font-weight: 400;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.2px;
+      line-height: 1.5;
     }
     .hero-tagline em {
+      font-family: 'Playfair Display', serif;
       font-style: italic;
       color: var(--flare);
     }
@@ -128,27 +142,53 @@
       display: inline-flex; align-items: center; gap: 8px;
       background: linear-gradient(135deg, var(--brand), var(--flare));
       color: white;
-      padding: 16px 36px;
+      padding: 16px 40px;
       border-radius: 999px;
-      font-size: 16px; font-weight: 700;
+      font-size: 15px; font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 12px 40px rgba(176,38,255,0.4);
+      letter-spacing: 0.3px;
+      box-shadow: 0 16px 48px rgba(176,38,255,0.35);
       transition: transform 0.2s, box-shadow 0.2s;
       position: relative;
     }
     .hero-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 50px rgba(176,38,255,0.5);
+      box-shadow: 0 20px 60px rgba(176,38,255,0.45);
     }
     .hero-sub {
       margin-top: 16px;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text4);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── The Problem ── */
+    .problem {
+      padding: 80px 24px;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .problem p {
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--text2);
+      letter-spacing: -0.5px;
+    }
+    .problem p strong {
+      color: var(--bone);
+      font-weight: 700;
+    }
+    .problem p em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--flare);
     }
 
     /* ── Features ── */
     .features {
-      padding: 100px 24px;
+      padding: 80px 24px 100px;
       max-width: 1100px;
       margin: 0 auto;
     }
@@ -157,101 +197,128 @@
       margin-bottom: 64px;
     }
     .features-header .eyebrow {
-      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--brand); margin-bottom: 12px;
+      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--brand); margin-bottom: 16px; font-weight: 600;
     }
     .features-header h2 {
       font-size: clamp(32px, 5vw, 48px);
-      font-weight: 800; letter-spacing: -2px;
+      font-weight: 900; letter-spacing: -2px;
     }
     .feature-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
+      gap: 20px;
     }
     .feature-card {
-      padding: 32px;
+      padding: 36px 32px;
       border-radius: 20px;
       background: var(--bg-elevated);
       border: 1px solid var(--border);
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
     }
     .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(176,38,255,0.2);
+      transform: translateY(-6px);
+      border-color: rgba(176,38,255,0.15);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.3);
     }
-    .feature-icon {
-      font-size: 36px;
-      margin-bottom: 16px;
+    .feature-number {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      color: var(--text4); margin-bottom: 16px;
     }
     .feature-card h3 {
-      font-size: 20px; font-weight: 700; letter-spacing: -0.5px;
-      margin-bottom: 8px;
+      font-size: 22px; font-weight: 800; letter-spacing: -0.5px;
+      margin-bottom: 10px; line-height: 1.2;
     }
     .feature-card p {
-      font-size: 14px; line-height: 1.6;
+      font-size: 14px; line-height: 1.65;
       color: var(--text2);
     }
     .feature-card .tag {
-      display: inline-block; margin-top: 12px;
-      padding: 4px 10px; border-radius: 999px;
-      font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+      display: inline-block; margin-top: 16px;
+      padding: 5px 12px; border-radius: 999px;
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
     }
-    .tag-mesh { background: rgba(0,255,159,0.12); color: var(--neon); }
-    .tag-radar { background: rgba(93,169,255,0.12); color: var(--sky); }
-    .tag-social { background: rgba(176,38,255,0.12); color: var(--brand); }
-    .tag-totem { background: rgba(255,92,31,0.12); color: var(--flare); }
+    .tag-mesh { background: rgba(0,255,159,0.1); color: var(--neon); }
+    .tag-radar { background: rgba(93,169,255,0.1); color: var(--sky); }
+    .tag-social { background: rgba(176,38,255,0.1); color: var(--brand); }
+    .tag-totem { background: rgba(255,92,31,0.1); color: var(--flare); }
 
     /* ── Totem Section ── */
     .totem-section {
-      padding: 100px 24px;
+      padding: 100px 24px 120px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
     .totem-section::before {
       content: '';
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(255,42,91,0.08) 0%, transparent 60%);
+      position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(255,92,31,0.07) 0%, transparent 60%);
       pointer-events: none;
     }
     .totem-section .eyebrow {
-      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--flare); margin-bottom: 12px;
+      font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--flare); margin-bottom: 16px; font-weight: 600;
     }
     .totem-section h2 {
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 800; letter-spacing: -2px;
-      margin-bottom: 16px;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 900; letter-spacing: -2.5px;
+      margin-bottom: 20px;
     }
     .totem-section h2 em {
-      font-style: italic; color: var(--flare); font-weight: 400;
+      font-family: 'Playfair Display', serif;
+      font-style: italic; color: var(--flare); font-weight: 700;
     }
     .totem-section .desc {
-      max-width: 600px; margin: 0 auto 48px;
+      max-width: 560px; margin: 0 auto 48px;
       font-size: 16px; color: var(--text2); line-height: 1.7;
     }
-    .totem-features {
-      display: flex; flex-wrap: wrap; gap: 16px;
-      justify-content: center; max-width: 700px; margin: 0 auto;
+    .totem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      max-width: 720px; margin: 0 auto;
     }
     .totem-pill {
-      padding: 10px 20px; border-radius: 999px;
-      background: rgba(255,255,255,0.04);
+      padding: 14px 16px; border-radius: 14px;
+      background: rgba(255,255,255,0.03);
       border: 1px solid var(--border);
-      font-size: 14px; color: var(--text2);
+      font-size: 13px; color: var(--text2);
+      text-align: left; line-height: 1.4;
+    }
+    .totem-pill strong {
+      display: block; color: var(--bone); font-size: 14px;
+      margin-bottom: 2px;
     }
 
     /* ── CTA Section ── */
     .cta-section {
-      padding: 100px 24px;
+      padding: 100px 24px 120px;
       text-align: center;
+      position: relative;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 400px;
+      background: radial-gradient(ellipse, rgba(176,38,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
     }
     .cta-section h2 {
-      font-size: clamp(28px, 5vw, 44px);
-      font-weight: 800; letter-spacing: -2px;
-      margin-bottom: 24px;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 900; letter-spacing: -2.5px;
+      margin-bottom: 12px;
+      line-height: 1.05;
+    }
+    .cta-section h2 em {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; color: var(--brand); font-weight: 700;
+    }
+    .cta-sub-text {
+      color: var(--text3); font-size: 15px;
+      max-width: 400px; margin: 0 auto 36px;
+      line-height: 1.5;
     }
     .cta-section .hero-cta { margin-bottom: 12px; }
 
@@ -261,7 +328,7 @@
       border-top: 1px solid var(--border);
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 16px;
-      font-size: 13px; color: var(--text4);
+      font-size: 12px; color: var(--text4);
     }
     footer a { color: var(--text3); text-decoration: none; }
     footer a:hover { color: var(--bone); }
@@ -271,9 +338,10 @@
     @media (max-width: 640px) {
       nav { padding: 12px 16px; }
       .nav-links a:not(.nav-cta) { display: none; }
-      .hero { padding: 100px 20px 60px; }
+      .hero { padding: 120px 20px 80px; }
       .features { padding: 60px 20px; }
       .feature-grid { grid-template-columns: 1fr; }
+      .totem-grid { grid-template-columns: 1fr 1fr; }
       footer { flex-direction: column; text-align: center; }
     }
   </style>
@@ -281,13 +349,13 @@
 <body>
 
 <nav>
-  <div class="nav-logo">
+  <a href="/" class="nav-logo">
     <img src="/icon-192.png" alt="Side Quest">
     <span>Side Quest</span>
-  </div>
+  </a>
   <div class="nav-links">
     <a href="#features">Features</a>
-    <a href="#totem">Totem Mode</a>
+    <a href="#totem">Totem</a>
     <a href="/privacy">Privacy</a>
     <a href="#download" class="nav-cta">Get the Beta</a>
   </div>
@@ -295,83 +363,109 @@
 
 <section class="hero">
   <img src="/icon-192.png" alt="Side Quest" class="hero-icon">
+  <div class="hero-eyebrow">THE FESTIVAL COMPANION</div>
   <h1><span>sidequesting.</span></h1>
-  <p class="hero-tagline">The app that keeps your crew together<br>when the signal drops and the crowd swallows everyone.</p>
+  <p class="hero-tagline">It's 1 AM. No signal. No idea where your crew went.<br><em>Not anymore.</em></p>
   <a href="#download" class="hero-cta">Join the Beta</a>
-  <p class="hero-sub">Side Quest for iOS · Free · Coming to TestFlight</p>
+  <p class="hero-sub">Side Quest for iOS · TestFlight · Free</p>
+</section>
+
+<section class="problem">
+  <p>
+    Every festival has the same story. You split up to catch different sets, the <strong>crowd swallows everyone</strong>, your texts don't send, and you spend the next hour wandering with a dead signal looking for people you were standing next to <em>twenty minutes ago.</em>
+  </p>
 </section>
 
 <section class="features" id="features">
   <div class="features-header">
-    <div class="eyebrow">BUILT FOR FESTIVALS</div>
-    <h2>Everything sidequesting demands</h2>
+    <div class="eyebrow">HOW IT WORKS</div>
+    <h2>Six ways to never lose<br>each other again</h2>
   </div>
   <div class="feature-grid">
     <div class="feature-card">
-      <div class="feature-icon">📡</div>
-      <h3>Bluetooth Mesh</h3>
-      <p>When cell towers are overloaded and texts won't send, Side Quest relays messages directly between phones via Bluetooth. Multi-hop — your message bounces through the crowd to reach your friend.</p>
-      <span class="tag tag-mesh">WORKS OFFLINE</span>
+      <div class="feature-number">01</div>
+      <h3>When cell dies,<br>you don't.</h3>
+      <p>Side Quest relays messages directly between phones via Bluetooth — no towers, no wifi, no internet. Your message hops through the crowd until it reaches your friend, even hundreds of feet away.</p>
+      <span class="tag tag-mesh">BLUETOOTH MESH</span>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🧭</div>
-      <h3>Live Radar</h3>
-      <p>A compass that points to every member of your squad with distance and direction, updated in real time. No more "where are you?" texts — just look at the arrow and walk.</p>
-      <span class="tag tag-radar">REAL-TIME GPS</span>
+      <div class="feature-number">02</div>
+      <h3>Follow the arrow.<br>Find the person.</h3>
+      <p>A live compass that points to every member of your squad with real distance and bearing. Stop texting "where are you" into the void. Just look at the arrow and walk.</p>
+      <span class="tag tag-radar">LIVE RADAR</span>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🗓️</div>
-      <h3>Shared Schedule</h3>
-      <p>Everyone picks their must-see sets from the real lineup. See who's going where, spot conflicts, and plan reunion meetups automatically.</p>
-      <span class="tag tag-social">SQUAD SYNC</span>
+      <div class="feature-number">03</div>
+      <h3>Same lineup.<br>Different plans. No FOMO.</h3>
+      <p>Everyone picks their must-see sets from the actual festival lineup. The shared schedule shows who's where, flags conflicts, and surfaces moments where the whole crew reunites.</p>
+      <span class="tag tag-social">SHARED SCHEDULE</span>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🗺️</div>
-      <h3>Festival Map</h3>
-      <p>Interactive venue map with every stage. Scrub through the day to see what's playing where. Tap to check in and show your squad where you are.</p>
-      <span class="tag tag-social">INTERACTIVE</span>
+      <div class="feature-number">04</div>
+      <h3>Every stage.<br>Every hour. One tap.</h3>
+      <p>Interactive venue map. Scrub through the day to see what's playing at each stage. Tap a stage to check in — your squad sees you on the map instantly.</p>
+      <span class="tag tag-social">FESTIVAL MAP</span>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">💬</div>
-      <h3>Encrypted Chat</h3>
-      <p>Group chat that works over cell service AND over Bluetooth mesh. End-to-end encrypted — nobody outside your squad can read a thing. Messages marked "MESH" when they traveled via Bluetooth.</p>
-      <span class="tag tag-mesh">E2E ENCRYPTED</span>
+      <div class="feature-number">05</div>
+      <h3>Talk through<br>the crowd.</h3>
+      <p>Group chat that works over cell or Bluetooth mesh. End-to-end encrypted. Messages marked "MESH" when they traveled via Bluetooth so you know the connection status.</p>
+      <span class="tag tag-mesh">ENCRYPTED CHAT</span>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🔦</div>
-      <h3>Totem Mode</h3>
-      <p>Raise a digital totem so your squad can find you in the crowd. RSSI-powered hot/cold proximity — your phone vibrates faster as you get closer. The last 30 feet through a dense crowd, solved.</p>
-      <span class="tag tag-totem">NEW</span>
+      <div class="feature-number">06</div>
+      <h3>Raise your<br>totem.</h3>
+      <p>Lost in the crowd? Tap one button. Your squad's phones light up with your direction and a signal that pulses faster as they get closer. The last 30 feet through a dense crowd — solved.</p>
+      <span class="tag tag-totem">TOTEM MODE</span>
     </div>
   </div>
 </section>
 
 <section class="totem-section" id="totem">
-  <div class="eyebrow">THE MARQUEE FEATURE</div>
+  <div class="eyebrow">THE HEADLINE FEATURE</div>
   <h2>Raise your <em>totem.</em></h2>
   <p class="desc">
-    At a real festival, someone carries a tall flag so the group can spot them in a crowd of thousands. Side Quest's Totem Mode is that — but digital. Tap one button when you're lost, and your squad's phones light up with your direction, distance, and a signal that gets stronger as they get closer.
+    At a real festival, someone carries a tall flag so the group can spot them in a sea of people. Side Quest makes your phone that flag. One tap, and every phone in your squad becomes a compass pointing straight at you.
   </p>
-  <div class="totem-features">
-    <div class="totem-pill">🆘 SOS Mode — "come get me"</div>
-    <div class="totem-pill">📍 Rendezvous — "I'm at the spot"</div>
-    <div class="totem-pill">🔥 Hot/cold proximity via Bluetooth</div>
-    <div class="totem-pill">🔋 ~10% battery over 60 minutes</div>
-    <div class="totem-pill">📱 Works without cell service</div>
-    <div class="totem-pill">🎯 Auto-stops when you reunite</div>
+  <div class="totem-grid">
+    <div class="totem-pill">
+      <strong>SOS Mode</strong>
+      Come get me — I'm lost.
+    </div>
+    <div class="totem-pill">
+      <strong>Rendezvous</strong>
+      I'm at the spot. Come find me.
+    </div>
+    <div class="totem-pill">
+      <strong>Hot / Cold</strong>
+      Phone pulses faster as you close in.
+    </div>
+    <div class="totem-pill">
+      <strong>No signal needed</strong>
+      Works entirely over Bluetooth.
+    </div>
+    <div class="totem-pill">
+      <strong>Battery aware</strong>
+      ~10% over a full 60-minute session.
+    </div>
+    <div class="totem-pill">
+      <strong>Auto-reunite</strong>
+      Stops itself when you find each other.
+    </div>
   </div>
 </section>
 
 <section class="cta-section" id="download">
-  <h2>Start sidequesting<br>without losing each other.</h2>
-  <a href="mailto:jorrelpatterson@gmail.com?subject=Side Quest Beta Access&body=I want to join the Side Quest beta! My name is: " class="hero-cta">Request Beta Access</a>
-  <p class="hero-sub">Side Quest for iOS · TestFlight beta · Free</p>
+  <h2>Stop wandering.<br>Start <em>sidequesting.</em></h2>
+  <p class="cta-sub-text">Currently in closed beta for iOS. Request access and we'll add you to the next TestFlight wave.</p>
+  <a href="mailto:jorrelpatterson@gmail.com?subject=Side%20Quest%20Beta&body=I%20want%20in.%20My%20name%3A%20" class="hero-cta">Request Beta Access</a>
+  <p class="hero-sub">Free · iOS · No ads · No tracking · No bullshit</p>
 </section>
 
 <footer>
-  <div>&copy; 2026 Jorrel Patterson. All rights reserved.</div>
+  <div>&copy; 2026 Jorrel Patterson</div>
   <div class="footer-links">
-    <a href="/privacy">Privacy Policy</a>
+    <a href="/privacy">Privacy</a>
     <a href="mailto:jorrelpatterson@gmail.com">Contact</a>
   </div>
 </footer>
